@@ -25,6 +25,21 @@ public class NoteAppAutomation
         }
         WebElement register = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Create an account")));
         register.click();
+        WebElement eMail = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[data-testid=register-email]")));
+        eMail.sendKeys("demouser0@gmail.com");
+        WebElement passWord = wait.until((ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[data-testid=register-password]"))));
+        passWord.sendKeys("123456789");
+        WebElement name = wait.until((ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[data-testid=register-name]"))));
+        name.sendKeys("Demo User");
+        WebElement confirmPass = wait.until((ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[data-testid=register-confirm-password]"))));
+        confirmPass.sendKeys("123456789");
+        WebElement userRegister = wait.until((ExpectedConditions.elementToBeClickable(By.cssSelector("button[data-testid=register-submit]"))));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", userRegister);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         driver.quit();
 
 
