@@ -30,7 +30,7 @@ public class NoteAppAutomation
         WebElement register = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Create an account")));
         register.click();
         WebElement eMail = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[data-testid=register-email]")));
-        eMail.sendKeys("demouser70@gmail.com");
+        eMail.sendKeys("demouser73@gmail.com");
         WebElement passWord = wait.until((ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[data-testid=register-password]"))));
         passWord.sendKeys("123456789");
         WebElement name = wait.until((ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[data-testid=register-name]"))));
@@ -48,7 +48,7 @@ public class NoteAppAutomation
         WebElement logIn = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Click here to Log In")));
         logIn.click();
         WebElement logMail = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[data-testid=login-email]")));
-        logMail.sendKeys("demouser70@gmail.com");
+        logMail.sendKeys("demouser73@gmail.com");
         WebElement logPassword = wait.until((ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[data-testid=login-password]"))));
         logPassword.sendKeys("123456789");
         WebElement appLog = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[data-testid='login-submit']")));
@@ -85,9 +85,13 @@ public class NoteAppAutomation
         WebElement editDesc = wait.until(ExpectedConditions.elementToBeClickable(By.id("description")));
         editDesc.clear();
         editDesc.sendKeys("Today I learned Selenium automation.");
+        WebElement editDes = wait.until(ExpectedConditions.elementToBeClickable(By.id("description")));
+        editDes.click();
         WebElement submitBtn1 = wait.until(ExpectedConditions.elementToBeClickable(By.id("description")));
         submitBtn1.click();
         driver.quit();
+
+
 
     }
 
