@@ -3,7 +3,9 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -26,7 +28,7 @@ public class NoteAppAutomation
         WebElement register = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Create an account")));
         register.click();
         WebElement eMail = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[data-testid=register-email]")));
-        eMail.sendKeys("demouser45@gmail.com");
+        eMail.sendKeys("demouser36@gmail.com");
         WebElement passWord = wait.until((ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[data-testid=register-password]"))));
         passWord.sendKeys("123456789");
         WebElement name = wait.until((ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[data-testid=register-name]"))));
@@ -44,7 +46,7 @@ public class NoteAppAutomation
         WebElement logIn = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Click here to Log In")));
         logIn.click();
         WebElement logMail = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[data-testid=login-email]")));
-        logMail.sendKeys("demouser45@gmail.com");
+        logMail.sendKeys("demouser36@gmail.com");
         WebElement logPassword = wait.until((ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[data-testid=login-password]"))));
         logPassword.sendKeys("123456789");
         WebElement appLog = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[data-testid='login-submit']")));
@@ -52,7 +54,24 @@ public class NoteAppAutomation
 
         WebElement createNote = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[data-testid='add-new-note']")));
         createNote.click();
+
+
+        WebElement dropdownElement = driver.findElement(By.id("category"));
+        Select dropdown = new Select(dropdownElement);
+        dropdown.selectByValue("Home");
+        WebElement checkbox = driver.findElement(By.id("completed"));
+        if (!checkbox.isSelected()) {
+            checkbox.click();
+        }
+        WebElement title = driver.findElement(By.id("title"));
+        title.sendKeys("Buy groceries");
+        WebElement desc = driver.findElement(By.id("description"));
+        desc.sendKeys("Purchase vegetables, fruits, and milk for the week.");
+        WebElement submitBtn = driver.findElement(By.id("description"));
+        submitBtn.click();
+
         driver.quit();
+
     }
 
 }
