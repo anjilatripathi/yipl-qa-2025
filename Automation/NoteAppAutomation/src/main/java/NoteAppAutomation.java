@@ -30,7 +30,7 @@ public class NoteAppAutomation
         WebElement register = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Create an account")));
         register.click();
         WebElement eMail = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[data-testid=register-email]")));
-        eMail.sendKeys("demouser21@gmail.com");
+        eMail.sendKeys("demouser70@gmail.com");
         WebElement passWord = wait.until((ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[data-testid=register-password]"))));
         passWord.sendKeys("123456789");
         WebElement name = wait.until((ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[data-testid=register-name]"))));
@@ -48,7 +48,7 @@ public class NoteAppAutomation
         WebElement logIn = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Click here to Log In")));
         logIn.click();
         WebElement logMail = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[data-testid=login-email]")));
-        logMail.sendKeys("demouser21@gmail.com");
+        logMail.sendKeys("demouser70@gmail.com");
         WebElement logPassword = wait.until((ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[data-testid=login-password]"))));
         logPassword.sendKeys("123456789");
         WebElement appLog = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[data-testid='login-submit']")));
@@ -72,7 +72,21 @@ public class NoteAppAutomation
         WebElement submitBtn = wait.until(ExpectedConditions.elementToBeClickable(By.id("description")));
         submitBtn.click();
 
-
+        WebElement editDropdown = wait.until(ExpectedConditions.elementToBeClickable(By.id("category")));
+        Select dropdown2 = new Select(editDropdown);
+        dropdown2.selectByValue("Personal");
+        WebElement checkbox1 = wait.until(ExpectedConditions.elementToBeClickable(By.id("completed")));
+        if (checkbox1.isSelected()) {
+            checkbox1.click();
+        }
+        WebElement editTitle = wait.until(ExpectedConditions.elementToBeClickable(By.id("title")));
+        editTitle.clear();
+        editTitle.sendKeys("Personal Journal");
+        WebElement editDesc = wait.until(ExpectedConditions.elementToBeClickable(By.id("description")));
+        editDesc.clear();
+        editDesc.sendKeys("Today I learned Selenium automation.");
+        WebElement submitBtn1 = wait.until(ExpectedConditions.elementToBeClickable(By.id("description")));
+        submitBtn1.click();
         driver.quit();
 
     }
