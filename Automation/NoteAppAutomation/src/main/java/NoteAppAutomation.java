@@ -30,7 +30,7 @@ public class NoteAppAutomation
         WebElement register = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Create an account")));
         register.click();
         WebElement eMail = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[data-testid=register-email]")));
-        eMail.sendKeys("demouser73@gmail.com");
+        eMail.sendKeys("demouser109@gmail.com");
         WebElement passWord = wait.until((ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[data-testid=register-password]"))));
         passWord.sendKeys("123456789");
         WebElement name = wait.until((ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[data-testid=register-name]"))));
@@ -48,7 +48,7 @@ public class NoteAppAutomation
         WebElement logIn = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Click here to Log In")));
         logIn.click();
         WebElement logMail = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[data-testid=login-email]")));
-        logMail.sendKeys("demouser73@gmail.com");
+        logMail.sendKeys("demouser109@gmail.com");
         WebElement logPassword = wait.until((ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[data-testid=login-password]"))));
         logPassword.sendKeys("123456789");
         WebElement appLog = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[data-testid='login-submit']")));
@@ -87,9 +87,13 @@ public class NoteAppAutomation
         editDesc.sendKeys("Today I learned Selenium automation.");
         WebElement editDes = wait.until(ExpectedConditions.elementToBeClickable(By.id("description")));
         editDes.click();
-        WebElement submitBtn1 = wait.until(ExpectedConditions.elementToBeClickable(By.id("description")));
+        WebElement submitBtn1 = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[data-testid='note-submit']")));
         submitBtn1.click();
-        driver.quit();
+        ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight);");
+        WebElement deleteNote = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[data-testid='note-delete']")));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", deleteNote);
+        WebElement finalDelete = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[data-testid='note-delete-confirm']")));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", finalDelete);
 
 
 
