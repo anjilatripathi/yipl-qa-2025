@@ -50,6 +50,8 @@ public class NoteAppAutomation
         WebElement appLog = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[data-testid='login-submit']")));
         appLog.click();
 
+        WebElement createNote = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[data-testid='add-new-note']")));
+        createNote.click();
         driver.quit();
     }
 
