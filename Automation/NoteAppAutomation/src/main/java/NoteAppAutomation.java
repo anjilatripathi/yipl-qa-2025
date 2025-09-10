@@ -26,7 +26,7 @@ public class NoteAppAutomation
         WebElement register = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Create an account")));
         register.click();
         WebElement eMail = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[data-testid=register-email]")));
-        eMail.sendKeys("demouser0@gmail.com");
+        eMail.sendKeys("demouser45@gmail.com");
         WebElement passWord = wait.until((ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[data-testid=register-password]"))));
         passWord.sendKeys("123456789");
         WebElement name = wait.until((ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[data-testid=register-name]"))));
@@ -40,9 +40,17 @@ public class NoteAppAutomation
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        WebElement logIn = wait.until(ExpectedConditions.elementToBeClickable(By.linkText("Click here to Log In")));
+        logIn.click();
+        WebElement logMail = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[data-testid=login-email]")));
+        logMail.sendKeys("demouser45@gmail.com");
+        WebElement logPassword = wait.until((ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[data-testid=login-password]"))));
+        logPassword.sendKeys("123456789");
+        WebElement appLog = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("button[data-testid='login-submit']")));
+        appLog.click();
+
         driver.quit();
-
-
     }
 
 }
